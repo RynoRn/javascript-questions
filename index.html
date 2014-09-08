@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>Javascript questions</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -25,6 +25,20 @@
     <style>
       .block {
         margin: 0 0 15px;
+        position: relative;
+      }
+      .block pre {
+        width: 85%;
+        float: left;
+      }
+      .block  .btn {
+        margin: -5px 0 0 10px;
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+      }
+      .block--test {
+        padding-top: 50px;
       }
     </style>
   </head>
@@ -34,7 +48,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <button type="btn btn-info" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -45,8 +59,8 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#test1">Test 1</a></li>
+            <li><a href="#test2">Test 2</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -59,51 +73,171 @@
         <p class="lead">Some set of advanced Javascript questions.<br/>Worth checking out before going to an interview.</p>
       </div>
 
-      <div class="block">
+      <h2 id="test1" class="block--test">Test #1</h2>
+
+      <div class="block clearfix">
         <pre>if (!("a" in window)) {
   var a = 1;
 }
 alert(a);</pre>
-        <button class="button clearfix js-runscript">Run script</button>
+        <button class="btn btn-info clearfix js-runscript">Run script</button>
         <div class="result"></div>
       </div>
 
-      <div class="block">
+      <div class="block clearfix">
         <pre>var a = 1, 
 b = function a(x) {
   x && a(--x);
 };
 alert(a);</pre>
-        <button class="button clearfix js-runscript">Run script</button>
+        <button class="btn btn-info clearfix js-runscript">Run script</button>
         <div class="result"></div>
       </div>
 
-      <div class="block">
+      <div class="block clearfix">
         <pre>function a(x) {
   return x * 2;
 }
 var a;
 alert(a);</pre>
-        <button class="button clearfix js-runscript">Run script</button>
+        <button class="btn btn-info clearfix js-runscript">Run script</button>
         <div class="result"></div>
       </div>
 
-      <div class="block">
+      <div class="block clearfix">
         <pre>function b(x, y, a) {
   arguments[2] = 10;
   alert(a);
 }
 b(1, 2, 3);</pre>
-        <button class="button clearfix js-runscript">Run script</button>
+        <button class="btn btn-info clearfix js-runscript">Run script</button>
         <div class="result"></div>
       </div>
 
-      <div class="block">
+      <div class="block clearfix">
         <pre>function a() {
   alert(this);
 }
 a.call(null);</pre>
-        <button class="button clearfix js-runscript">Run script</button>
+        <button class="btn btn-info clearfix js-runscript">Run script</button>
+        <div class="result"></div>
+      </div>
+
+      <h2 id="test2" class="block--test">Test #2</h2>
+
+      <div class="block clearfix">
+        <pre>(function(){
+  return typeof arguments;
+})();</pre>
+        <button class="btn btn-info clearfix js-runscript">Run script</button>
+        <div class="result"></div>
+      </div>
+
+      <div class="block clearfix">
+        <pre>var f = function g(){ return 23; };
+typeof g();</pre>
+        <button class="btn btn-info clearfix js-runscript">Run script</button>
+        <div class="result"></div>
+      </div>
+
+      <div class="block clearfix">
+        <pre>(function(x){
+  delete x;
+  return x;
+})(1);</pre>
+        <button class="btn btn-info clearfix js-runscript">Run script</button>
+        <div class="result"></div>
+      </div>
+
+      <div class="block clearfix">
+        <pre>var y = 1, x = y = typeof x;
+alert(x);</pre>
+        <button class="btn btn-info clearfix js-runscript">Run script</button>
+        <div class="result"></div>
+      </div>
+
+      <div class="block clearfix">
+        <pre>(function f(f){
+  return typeof f();
+})(function(){ return 1; });</pre>
+        <button class="btn btn-info clearfix js-runscript">Run script</button>
+        <div class="result"></div>
+      </div>
+
+      <div class="block clearfix">
+        <pre>var foo = {
+  bar: function() { return this.baz; },
+  baz: 1
+};
+(function(){
+  return typeof arguments[0]();
+})(foo.bar);</pre>
+        <button class="btn btn-info clearfix js-runscript">Run script</button>
+        <div class="result"></div>
+      </div>
+
+      <div class="block clearfix">
+        <pre>var foo = {
+  bar: function(){ return this.baz; },
+  baz: 1
+}
+alert(typeof (f = foo.bar)());</pre>
+        <button class="btn btn-info clearfix js-runscript">Run script</button>
+        <div class="result"></div>
+      </div>
+
+      <div class="block clearfix">
+        <pre>var f = (function f(){ return "1"; }, function g(){ return 2; })();
+alert(typeof f);</pre>
+        <button class="btn btn-info clearfix js-runscript">Run script</button>
+        <div class="result"></div>
+      </div>
+
+      <div class="block clearfix">
+        <pre>var x = 1;
+if (function f(){}) {
+  x += typeof f;
+}
+alert(x);</pre>
+        <button class="btn btn-info clearfix js-runscript">Run script</button>
+        <div class="result"></div>
+      </div>
+
+      <div class="block clearfix">
+        <pre>var x = [typeof x, typeof y][1];
+alert(typeof typeof x);</pre>
+        <button class="btn btn-info clearfix js-runscript">Run script</button>
+        <div class="result"></div>
+      </div>
+
+      <div class="block clearfix">
+        <pre>(function(foo){
+  return typeof foo.bar;
+})({ foo: { bar: 1 } });</pre>
+        <button class="btn btn-info clearfix js-runscript">Run script</button>
+        <div class="result"></div>
+      </div>
+
+      <div class="block clearfix">
+        <pre>(function f(){
+  function f(){ return 1; }
+  return f();
+  function f(){ return 2; }
+})();</pre>
+        <button class="btn btn-info clearfix js-runscript">Run script</button>
+        <div class="result"></div>
+      </div>
+
+      <div class="block clearfix">
+        <pre>function f(){ return f; }
+new f() instanceof f;</pre>
+        <button class="btn btn-info clearfix js-runscript">Run script</button>
+        <div class="result"></div>
+      </div>
+
+      <div class="block clearfix">
+        <pre>with (function(x, undefined){}) length;</pre>
+        <button class="btn btn-info clearfix js-runscript">Run script</button>
         <div class="result"></div>
       </div>
 

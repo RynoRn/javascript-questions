@@ -21,6 +21,12 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <style>
+      .block {
+        margin: 0 0 15px;
+      }
+    </style>
   </head>
 
   <body>
@@ -53,6 +59,54 @@
         <p class="lead">Some set of advanced Javascript questions.<br/>Worth checking out before going to an interview.</p>
       </div>
 
+      <div class="block">
+        <pre>if (!("a" in window)) {
+  var a = 1;
+}
+alert(a);</pre>
+        <button class="button clearfix js-runscript">Run script</button>
+        <div class="result"></div>
+      </div>
+
+      <div class="block">
+        <pre>var a = 1, 
+b = function a(x) {
+  x && a(--x);
+};
+alert(a);</pre>
+        <button class="button clearfix js-runscript">Run script</button>
+        <div class="result"></div>
+      </div>
+
+      <div class="block">
+        <pre>function a(x) {
+  return x * 2;
+}
+var a;
+alert(a);</pre>
+        <button class="button clearfix js-runscript">Run script</button>
+        <div class="result"></div>
+      </div>
+
+      <div class="block">
+        <pre>function b(x, y, a) {
+  arguments[2] = 10;
+  alert(a);
+}
+b(1, 2, 3);</pre>
+        <button class="button clearfix js-runscript">Run script</button>
+        <div class="result"></div>
+      </div>
+
+      <div class="block">
+        <pre>function a() {
+  alert(this);
+}
+a.call(null);</pre>
+        <button class="button clearfix js-runscript">Run script</button>
+        <div class="result"></div>
+      </div>
+
     </div><!-- /.container -->
 
 
@@ -61,5 +115,13 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        $(".js-runscript").on("click", function(){
+          var $button = $(this);
+          var script = $button.prev().text();
+          eval(script);
+        });
+    </script>
   </body>
 </html>

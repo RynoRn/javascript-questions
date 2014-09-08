@@ -1,0 +1,28 @@
+body {
+	padding-top: 50px;
+}
+.starter-template {
+	padding: 40px 15px;
+	text-align: center;
+}
+
+h2 + h5 {
+	margin-bottom: 20px;
+}
+.block {
+	margin: 0 0 15px;
+	position: relative;
+}
+.block pre {
+	width: 85%;
+	float: left;
+}
+.block  .btn {
+	margin: -5px 0 0 10px;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+}
+.block--test {
+	padding-top: 50px;
+}

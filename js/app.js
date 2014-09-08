@@ -36,10 +36,27 @@ angular.module('jsQuestions', [])
           { script: 'function f(){ return f; }\nnew f() instanceof f;' },
           { script: 'with (function(x, undefined){}) length;' }
         ]
+      },
+      {
+        id: 'test3',
+        title: 'Test #3',
+        sourceUrl: 'http://doppnet.com/2011/10/10-advanced-javascript-interview-questions/',
+        questions: [
+          { script: '(function() {\n\tbaz = 5;\n\tvar bar = 10;\n})();\nconsole.log(baz);\nconsole.log(bar);' },
+          { script: 'console.log("" == "0");\nconsole.log(0 == "");\nconsole.log(0 == "0");\nconsole.log(false == "false");\nconsole.log(false == "0");\nconsole.log(false == undefined);\nconsole.log(false == null);\nconsole.log(null == undefined);' },
+          { script: '(function() {\n\tvar foo = 1;\n\tfunction bar() {\n\t\tvar foo = 2;\n\t}\n\tbar();\n\tconsole.log(foo);\n\tif(true) {\n\t\tvar foo = 3;\n\t}\n\tconsole.log(foo);\t\n})();' },
+          { script: '(function() {\n\tconsole.log(bar);\n\tconsole.log(baz);\n\tfoo();\n\tfunction foo() {\n\tconsole.log("aloha");\n\t}\n\tvar bar = 1;\n\tbaz = 2;\n})();' },
+          { script: '(function() {\n\tfunction foo(x) {\n\t\tvar baz = 3;\n\t\treturn function (y) {\n\t\t\tconsole.log(x + y + (++baz));\n\t\t}\n\t}\n\tvar moo = foo(2);\n\tmoo(1);\n\tmoo(1);\n})();' },
+          { script: '(function() {\n\tvar genericObject = {\n\t\tbar : "Hello World",\n\t\tget_bar : function() {\n\t\t\treturn this.bar;\n\t\t}\n\t};\n\tvar customObject = Object.create(genericObject);\n\tcustomObject.bar = "Aloha folks!";\n\tconsole.log(customObject.get_bar());\n\tdelete customObject.bar;\n\tconsole.log(customObject.get_bar());\n})();' }
+        ]
       }
     ];
 
     $scope.runScript = function(){
-      eval(this.q.script);
+      try {
+        eval(this.q.script);
+      } catch (e){
+        console.error(e.message)
+      }
     };
   }]);

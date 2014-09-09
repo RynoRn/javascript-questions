@@ -49,6 +49,26 @@ angular.module('jsQuestions', [])
           { script: '(function() {\n\tfunction foo(x) {\n\t\tvar baz = 3;\n\t\treturn function (y) {\n\t\t\tconsole.log(x + y + (++baz));\n\t\t}\n\t}\n\tvar moo = foo(2);\n\tmoo(1);\n\tmoo(1);\n})();' },
           { script: '(function() {\n\tvar genericObject = {\n\t\tbar : "Hello World",\n\t\tget_bar : function() {\n\t\t\treturn this.bar;\n\t\t}\n\t};\n\tvar customObject = Object.create(genericObject);\n\tcustomObject.bar = "Aloha folks!";\n\tconsole.log(customObject.get_bar());\n\tdelete customObject.bar;\n\tconsole.log(customObject.get_bar());\n})();' }
         ]
+      },
+      {
+        id: 'test4',
+        title: 'Test #4',
+        sourceUrl: 'http://jsquiz.com/',
+        questions: [
+          { script: '// The (Revealing) Module Pattern:\nvar Module = (function () {\n\tvar name = "private";\n\tfunction getName() {\n\t\treturn name;\n\t}\n\treturn {\n\t\tgetName: getName\n\t};\n})();\nconsole.log(Module.getName());' },
+          { script: '// How to make a method chainable?\nfunction chainable() {\n\treturn this;\n}' },
+          { script: '// How can you detect whether an object is an Array?\nvar someArray = [];\nfunction isArray(arr) {\n\treturn Object.prototype.toString.call(arr) === "[object Array]";\n}\nisArray(someArray);' },
+          { script: 'function logValues() {\n\tfor (var i=0; i<5; i++) {\n\t\twindow.setTimeout((function (current) {\n\t\t\treturn function () {\n\t\t\t\tconsole.log(current);\n\t\t\t};\n\t\t})(i), 0);\n\t}\n}\nlogValues();' },
+          { script: '// Throttle\nvar update = function() { console.log("update") };\nvar throttle = (function () {\n\tvar timer;\n\treturn function (callback, interval) {\n\t\tif (timer) {\n\t\t\twindow.clearTimeout(timer);\n\t\t}\n\t\ttimer = window.setTimeout(callback, interval);\n\t};\n})();\n$(window).on("resize", function () {\n\tthrottle(update, 200);\n});' }
+        ]
+      },
+      {
+        id: 'test5',
+        title: 'Test #5',
+        sourceUrl: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Closures',
+        questions: [
+          { script: 'function add(x) {\n\treturn function(y) {\n\t\treturn x + y;\n\t};\n}\n\nconsole.log(add(5)(2));\nconsole.log(add(10)(2));' }
+        ]
       }
     ];
 

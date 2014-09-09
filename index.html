@@ -48,24 +48,26 @@
     </div>
 
     <div class="container">
+      <div class="row">
+        <div class="starter-template">
+          <h1>Javascript questions</h1>
+          <p class="lead">A collection of advanced Javascript questions.<br/>Worth checking out before going to an interview.</p>
+        </div>
 
-      <div class="starter-template">
-        <h1>Javascript questions</h1>
-        <p class="lead">A collection of advanced Javascript questions.<br/>Worth checking out before going to an interview.</p>
+        <div ng-controller="questionsController">
+          <section ng-repeat="t in tests">
+            <div class="container">
+              <h2 id="{{t.id}}" class="block--test">{{t.title}}</h2>
+              <h5>Source: <a href="{{t.sourceUrl}}" target="_blank">{{t.sourceUrl}}</a></h5>
+
+              <div class="block clearfix" ng-repeat="q in t.questions">
+                <pre class="col-md-8 col-xs-12">{{q.script}}</pre>
+                <button class="btn btn-lg btn-info clearfix js-runscript col-md-4 col-xs-12" ng-click="runScript()">{{buttonText}}</button>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
-
-      <div ng-controller="questionsController">
-        <section ng-repeat="t in tests">
-          <h2 id="{{t.id}}" class="block--test">{{t.title}}</h2>
-          <h5>Source: <a href="{{t.sourceUrl}}" target="_blank">{{t.sourceUrl}}</a></h5>
-
-          <div class="block clearfix" ng-repeat="q in t.questions">
-            <pre>{{q.script}}</pre>
-            <button class="btn btn-info clearfix js-runscript" ng-click="runScript()">{{buttonText}}</button>
-          </div>
-        </section>
-      </div>
-
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

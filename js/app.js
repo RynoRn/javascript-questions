@@ -103,6 +103,15 @@ angular.module('jsQuestions', [])
           { script: 'var number = "08",\n\tparsed = parseInt(number);\nalert(parsed);' },
           { script: 'alert( [typeof "hi" === "string", typeof new String("hi") === "string" ]  )' }
         ]
+      },
+      {
+        id: 'test9',
+        title: 'Test #9',
+        sourceUrl: 'http://frontendjournal.com/closures-probably-the-simplest-way-to-learn-it/',
+        questions: [
+          { script: 'var colors = ["button", "div", "a"];\nfor(var i=0; i<colors.length; i++) {\n\tdocument.getElementsByTagName(colors[i])[0].onclick = function() {\n\t\talert(colors[i]);\n\t};\n}' },
+          { script: 'var colors = ["button", "div", "a"],\n\tclickEvent = function(position) {\n\t\treturn function() {\n\t\t\talert("Tag of the element clicked is " + colors[position]);\n\t};\n};\nfor(var i=0; i<colors.length; i++) {\n\tdocument.getElementsByTagName(colors[i])[0].onclick = clickEvent(i);\n}' }
+        ]
       }
     ];
 

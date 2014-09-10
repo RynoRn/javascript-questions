@@ -2,6 +2,7 @@ angular.module('jsQuestions', [])
   .controller('questionsController', ['$scope', function($scope) {
 
     $scope.buttonText = 'Run script';
+    $scope.selectedMenu = -1;
 
     $scope.tests = [
       {
@@ -69,6 +70,39 @@ angular.module('jsQuestions', [])
         questions: [
           { script: 'function add(x) {\n\treturn function(y) {\n\t\treturn x + y;\n\t};\n}\n\nconsole.log(add(5)(2));\nconsole.log(add(10)(2));' }
         ]
+      },
+      {
+        id: 'test6',
+        title: 'Test #6',
+        sourceUrl: 'http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html',
+        questions: [
+          { script: 'var foo = 1;\nfunction bar() {\n\tif (!foo) {\n\t\tvar foo = 10;\n\t}\n\talert(foo);\n}\nbar();' },
+          { script: 'var a = 1;\nfunction b() {\n\ta = 10;\n\treturn;\n\tfunction a() {}\n}\nb();\nalert(a);' },
+          { script: 'function foo() {\n\tvar x = 1;\n\tif (x) {\n\t\t(function () {\n\t\t\tvar x = 2;\n\t\t}());\n\t}\n\talert(x);\n}\nfoo();' },
+          { script: 'function foo() {\n\tif (false) {\n\t\tvar x = 1;\n\t}\n\tvar y = 1;\n\tconsole.log(x, y);\n}\nfoo();' },
+          { script: 'function test() {\n\tbar();\n\tfoo();\n\tvar foo = function () {\n\t\talert("this wont run!");\n\t}\n\tfunction bar() {\n\t\talert("this will run!");\n\t}\n}\ntest();' },
+          { script: 'ECMAScript Standards:\n- If the variable statement occurs inside a FunctionDeclaration, the variables are defined with function-local scope in that function. Otherwise, they are defined with global scope (that is, they are created as members of the global object) using property attributes { DontDelete }.\n- Variables are created when the execution scope is entered.\n- A Block does not define a new execution scope. Only Program and FunctionDeclaration produce a new scope.\n- Variables are initialised to undefined when created.\n- A variable with an Initialiser is assigned the value of its AssignmentExpression when the VariableStatement is executed, not when the variable is created.' }
+        ]
+      },
+      {
+        id: 'test7',
+        title: 'Test #7',
+        sourceUrl: 'http://news.dice.com/2012/09/26/javascript-interview-questions/',
+        questions: [
+          { script: 'function extend (target, source) {\n\ttarget = target || {};\n\tfor (var prop in source) {\n\t\tif (typeof source[prop] === "object") {\n\t\t\ttarget[prop] = extend(target[prop], source[prop]);\n\t\t} else {\n\t\t\ttarget[prop] = source[prop];\n\t\t}\n\t}\n\treturn target;\n}' },
+          { script: 'function theFunction(name, profession) {\n\tconsole.log("My name is " + name + " and I am a " + profession + ".");}\n\ntheFunction("John", "fireman");\ntheFunction.apply(undefined, ["Susan", "school teacher"]);\ntheFunction.call(undefined, "Claude", "mathematician");' }
+        ]
+      },
+      {
+        id: 'test8',
+        title: 'Test #8',
+        sourceUrl: 'http://stackoverflow.com/questions/1684917/what-questions-should-a-javascript-programmer-be-able-to-answer',
+        questions: [
+          { script: 'Object.prototype.jack = {};\nvar a = [1,2,3];\nfor ( var number in a ) {\n\talert( number )\n}' },
+          { script: 'function identity() {\n\tvar name = "Jack";\n\t\talert(name);\n\t\treturn\n\t\tname\n};\nvar who = identity();\nalert(who);' },
+          { script: 'var number = "08",\n\tparsed = parseInt(number);\nalert(parsed);' },
+          { script: 'alert( [typeof "hi" === "string", typeof new String("hi") === "string" ]  )' }
+        ]
       }
     ];
 
@@ -78,5 +112,9 @@ angular.module('jsQuestions', [])
       } catch (e){
         console.error(e.message)
       }
+    };
+
+    $scope.selectMenu = function(index){
+      $scope.selectedMenu = index;
     };
   }]);

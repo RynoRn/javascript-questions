@@ -28,6 +28,9 @@ h2 + h5 {
 		-webkit-transform: none;
 	}
 }
+.block .btn:focus {
+	outline: 0;
+}
 .block--test {
 	padding-top: 50px;
 }

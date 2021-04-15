@@ -1,4 +1,4 @@
 javascript-questions
 ====================
 
-A set of advanced Javascript questions.
+A set of advanced Javascript interview questions.
